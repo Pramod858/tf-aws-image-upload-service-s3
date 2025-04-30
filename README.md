@@ -2,7 +2,6 @@
 
 ![Terraform Version](https://img.shields.io/badge/Terraform-1.5+-blue)
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?logo=amazon-aws)
-![License](https://img.shields.io/badge/License-MIT-green)
 
 A serverless image upload service using AWS S3 presigned URLs, Lambda functions, and SQS for asynchronous processing. Deployed with Terraform.
 
