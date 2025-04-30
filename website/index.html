@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>S3 Upload Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
+        #upload-box { border: 2px dashed #ccc; padding: 20px; text-align: center; margin: 20px 0; }
+        #preview { max-width: 100%; margin-top: 20px; display: none; }
+        #status { color: green; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Upload Image to S3</h1>
+    <div id="upload-box">
+        <input type="file" id="file-input" accept="image/*">
+        <p>Select an image (JPEG, PNG, GIF)</p>
+        <div id="status">Ready to upload</div>
+    </div>
+    <img id="preview" alt="Preview">
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const preview = document.getElementById('preview');
+        const status = document.getElementById('status');
+        const API_URL = 'https://api.pramodpro.xyz/upload';
+
+        fileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+            status.textContent = 'Preparing upload...';
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        filename: file.name,
+                        filetype: file.type
+                    })
+                });
+
+                if (!response.ok) throw new Error(await response.text());
+                const { url, key } = await response.json();
+                status.textContent = 'Uploading...';
+
+                const uploadResponse = await fetch(url, {
+                    method: 'PUT',
+                    body: file,
+                    headers: { 'Content-Type': file.type }
+                });
+
+                if (!uploadResponse.ok) throw new Error('Upload failed');
+                status.textContent = '✅ Upload successful!';
+            } catch (err) {
+                status.textContent = `❌ Error: ${err.message}`;
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>
