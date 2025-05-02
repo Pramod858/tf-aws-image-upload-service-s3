@@ -61,8 +61,8 @@ sequenceDiagram
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/tf-aws-image-upload-service.git
-cd tf-aws-image-upload-service
+git clone https://github.com/Pramod858/tf-aws-image-upload-service-s3.git
+cd tf-aws-image-upload-service-s3
 ```
 
 ### 2. Configure Variables
