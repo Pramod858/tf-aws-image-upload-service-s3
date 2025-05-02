@@ -176,8 +176,7 @@ tf-aws-image-upload-service-s3/
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
-├── README.md
-└── LICENSE
+└── README.md
 ```
 
 This README provides everything users need to understand, deploy, and integrate with your service while maintaining a professional appearance.
