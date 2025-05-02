@@ -144,9 +144,6 @@ aws logs tail /aws/lambda/image-processor --follow
 terraform destroy
 ```
 
-## 📜 License
-MIT License - See [LICENSE](LICENSE) for details.
-
 ## 🤝 Contributing
 1. Fork the project
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -157,7 +154,6 @@ MIT License - See [LICENSE](LICENSE) for details.
 ---
 
 > **Note**: Allow 5-10 minutes for all AWS services to propagate after deployment. For production use, enable versioning on S3 buckets and implement proper monitoring.
-```
 
 ### Key Features of This README:
 
@@ -171,7 +167,7 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ### Recommended Repository Structure:
 ```
-tf-aws-image-upload-service/
+tf-aws-image-upload-service-s3/
 ├── lambda/
 │   ├── presigned_url.py
 │   └── image_processor.py
@@ -180,7 +176,6 @@ tf-aws-image-upload-service/
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
-├── terraform.tfvars.example
 ├── README.md
 └── LICENSE
 ```
